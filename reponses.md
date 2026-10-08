@@ -159,7 +159,7 @@ ___
 | 1 | `ErrImagePull` / `ImagePullBackOff` | `kubectl describe pod -l app=ticket-debug` (Events) | `imagePullPolicy: Always` : cherche l'image sur Docker Hub alors qu'elle est locale à Minikube | `imagePullPolicy: IfNotPresent` |
 | 2 | `CreateContainerConfigError` | `kubectl describe pod -l app=ticket-debug` (Events) + `kubectl get cm` | `configMapRef: ticket-configmap` n'existe pas, la vraie s'appelle `ticket-config` | `name: ticket-config` |
 | 3 | `Running` mais `0/1` | `kubectl describe pod -l app=ticket-debug` (Events : `Readiness probe failed`) | `readinessProbe` sur `port: 8081` alors que l'app écoute sur `8080` | `port: 8080` (ou `port: http`) |
-
+ 
 **Q6.3**
 La ConfigMap est injectée en variables d'environnement, donc lues uniquement au démarrage du conteneur. Modifier la ConfigMap ne redémarre rien seul : il faut `kubectl rollout restart deploy/movie` pour recréer les Pods avec les nouvelles valeurs.
 ___
