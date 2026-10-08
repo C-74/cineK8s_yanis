@@ -49,13 +49,13 @@
 
 | Partie | Thème | Durée conseillée | Points |
 |:------:|-------|:----------------:|:------:|
-| 1 | 🧩 Comprendre le code | 15 min | 3 |
-| 2 | 🧪 Tester en local | 15 min | 2 |
-| 3 | 🐳 Conteneuriser (Dockerfile + Compose) | 30 min | 3 |
-| 4 | 🚀 Déployer sur Minikube | 55 min | 6 |
-| 5 | 🌐 Ingress | 15 min | 2 |
-| 6 | 💥 Casser pour comprendre | 30 min | 3 |
-| 7 | 🎓 Questions de synthèse | 10 min | 1 |
+| 1 | 🧩 Comprendre le code | 15 min | — |
+| 2 | 🧪 Tester en local | 15 min | — |
+| 3 | 🐳 Conteneuriser (Dockerfile + Compose) | 30 min | — |
+| 4 | 🚀 Déployer sur Minikube | 55 min | — |
+| 5 | 🌐 Ingress | 15 min | — |
+| 6 | 💥 Casser pour comprendre | 30 min | — |
+| 7 | 🎓 Questions de synthèse | 10 min | — |
 | — | Marge, relecture, rendu | 10 min | — |
 | ⭐ | Bonus (si vous avez de l'avance) | 20 min | +2 |
 
@@ -1145,18 +1145,6 @@ flowchart TD
     D -->|movie DOWN : nom inconnu| F[MOVIE_URL : nom du Service ?]
     D -->|movie DOWN : Connection refused| G[Port du Service ? 8080]
     D -->|movie UP| H[Regarder timeoutSeconds de la probe<br/>et les resources]
-```
-
----
-
-## 🧹 Nettoyage
-
-```bash
-kubectl delete namespace cinema-exam
-kubectl config set-context --current --namespace=default
-docker compose down 2>/dev/null
-minikube image rm movie-service:1.0.0 ticket-service:1.0.0
-sudo sed -i '' '/cinema.local/d' /etc/hosts        # macOS ; sans '' sur Linux
 ```
 
 ---
